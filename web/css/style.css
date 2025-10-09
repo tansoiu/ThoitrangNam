@@ -1,0 +1,8 @@
+body { font-family: Arial; margin: 0; padding: 0; background: #fafafa; }
+#topmenu { background: #222; color: white; padding: 10px; text-align: center; }
+#topmenu a { color: white; margin: 0 15px; text-decoration: none; }
+#topmenu a:hover { color: orange; }
+.title { color: #333; border-bottom: 2px solid orange; margin: 20px; }
+.product-list { display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; }
+.product-item { background: white; padding: 10px; border: 1px solid #ddd; width: 180px; text-align: center; }
+footer { text-align: center; padding: 10px; background: #222; color: white; }
