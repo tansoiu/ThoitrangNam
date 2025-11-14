@@ -9,69 +9,76 @@ package Model;
  * @author garen
  */
 public class User {
-    private int maTaiKhoan;
-    private String tenDangNhap;
-    private String matKhau;
-    private String hoTen;
-    private String email;
-    private String soDienThoai;
-    private String diaChi;
+    private int MaTaiKhoan;
+    private String TenDangNhap;
+    private String MatKhau;
+    private String HoTen;
+    private String Email;
+    private String SoDienThoai;
+    private String DiaChi;
+    private String Quyen;
 
     public int getMaTaiKhoan() {
-        return maTaiKhoan;
+        return MaTaiKhoan;
     }
 
-    public void setMaTaiKhoan(int maTaiKhoan) {
-        this.maTaiKhoan = maTaiKhoan;
+    public void setMaTaiKhoan(int MaTaiKhoan) {
+        this.MaTaiKhoan = MaTaiKhoan;
     }
 
     public String getTenDangNhap() {
-        return tenDangNhap;
+        return TenDangNhap;
     }
 
-    public void setTenDangNhap(String tenDangNhap) {
-        this.tenDangNhap = tenDangNhap;
+    public void setTenDangNhap(String TenDangNhap) {
+        this.TenDangNhap = TenDangNhap;
     }
 
     public String getMatKhau() {
-        return matKhau;
+        return MatKhau;
     }
 
-    public void setMatKhau(String matKhau) {
-        this.matKhau = matKhau;
+    public void setMatKhau(String MatKhau) {
+        this.MatKhau = MatKhau;
     }
 
     public String getHoTen() {
-        return hoTen;
+        return HoTen;
     }
 
-    public void setHoTen(String hoTen) {
-        this.hoTen = hoTen;
+    public void setHoTen(String HoTen) {
+        this.HoTen = HoTen;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
 
     public String getSoDienThoai() {
-        return soDienThoai;
+        return SoDienThoai;
     }
 
-    public void setSoDienThoai(String soDienThoai) {
-        this.soDienThoai = soDienThoai;
+    public void setSoDienThoai(String SoDienThoai) {
+        this.SoDienThoai = SoDienThoai;
     }
 
     public String getDiaChi() {
-        return diaChi;
+        return DiaChi;
     }
 
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
+    public void setDiaChi(String DiaChi) {
+        this.DiaChi = DiaChi;
     }
-    
-    
+
+    public String getQuyen() {
+        return Quyen;
+    }
+
+    public void setQuyen(String Quyen) {
+        this.Quyen = Quyen;
+    } 
 }

@@ -1,15 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-
-<!-- Link CSS riêng cho header -->
 <link rel="stylesheet" href="css/header.css">
 
 <div id="topmenu">
-  <!-- Logo hoặc tên website -->
+
   <div id="logo">
-    <a href="product?action=list">Thời Trang Nam 🌿</a>
+    <a href="product?action=list">TechMenSwear 🌿</a>
   </div>
 
-  <!-- Liên kết menu -->
+
   <div class="nav-links">
     <a href="product?action=list">Trang chủ</a>
     <a href="product?action=list&filter=new">Hàng mới</a>
@@ -17,7 +15,7 @@
     <a href="cart.jsp">Giỏ hàng</a>
   </div>
 
-  <!-- Khu vực người dùng -->
+
   <div class="user-area">
     <%
       Model.User u = (Model.User) session.getAttribute("user");

@@ -4,6 +4,8 @@
  */
 package Model;
 
+import java.util.List;
+
 /**
  *
  * @author garen
@@ -18,6 +20,15 @@ public class Product {
     private int soLuong;
     private String anh;
     private String danhMuc;
+
+    private List<ProductDetail> chiTietSanPham;
+
+    public List<ProductDetail> getChiTietSanPham() {
+        return chiTietSanPham;
+    }
+    public void setChiTietSanPham(List<ProductDetail> chiTietSanPham) {
+        this.chiTietSanPham = chiTietSanPham;
+    }
 
     public Product() {
     }

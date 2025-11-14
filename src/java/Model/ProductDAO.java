@@ -32,28 +32,58 @@ public class ProductDAO {
     }
 
     public Product getProductById(int id) {
-        String sql = "SELECT * FROM SanPham WHERE MaSanPham = ?";
-        try (Connection cn = DBConnection.getConnection();
-             PreparedStatement ps = cn.prepareStatement(sql)) {
-            ps.setInt(1, id);
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    Product p = new Product();
-                    p.setMaSanPham(rs.getInt("MaSanPham"));
-                    p.setSku(rs.getString("SKU"));
-                    p.setTenSanPham(rs.getString("TenSanPham"));
-                    p.setMoTa(rs.getString("MoTa"));
-                    p.setGia(rs.getDouble("Gia"));
-                    p.setGiaGiam((rs.getObject("GiaGiam")!=null)?rs.getDouble("GiaGiam"):null);
-                    p.setSoLuong(rs.getInt("SoLuong"));
-                    p.setAnh(rs.getString("Anh"));
-                    p.setDanhMuc(rs.getString("DanhMuc"));
-                    return p;
+    String sql = "SELECT * FROM SanPham WHERE MaSanPham = ?";
+    try (Connection cn = DBConnection.getConnection();
+         PreparedStatement ps = cn.prepareStatement(sql)) {
+
+        ps.setInt(1, id);
+        try (ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                Product p = new Product();
+                p.setMaSanPham(rs.getInt("MaSanPham"));
+                p.setSku(rs.getString("SKU"));
+                p.setTenSanPham(rs.getString("TenSanPham"));
+                p.setMoTa(rs.getString("MoTa"));
+                p.setGia(rs.getDouble("Gia"));
+                p.setGiaGiam((rs.getObject("GiaGiam") != null) ? rs.getDouble("GiaGiam") : null);
+                p.setSoLuong(rs.getInt("SoLuong"));
+                p.setAnh(rs.getString("Anh"));
+                p.setDanhMuc(rs.getString("DanhMuc"));
+
+                // Lấy danh sách size + số lượng từ bảng ChiTietSanPham
+                String sqlDetail = """
+                    SELECT c.MaChiTiet, c.MaSize, s.Size, c.SoLuong
+                    FROM ChiTietSanPham c
+                    JOIN Size_SP s ON c.MaSize = s.MaSize
+                    WHERE c.MaSanPham = ?
+                    ORDER BY s.MaSize
+                """;
+
+                try (PreparedStatement ps2 = cn.prepareStatement(sqlDetail)) {
+                    ps2.setInt(1, id);
+                    try (ResultSet rs2 = ps2.executeQuery()) {
+                        List<ProductDetail> list = new ArrayList<>();
+                        while (rs2.next()) {
+                            ProductDetail d = new ProductDetail();
+                            d.setMaChiTiet(rs2.getInt("MaChiTiet"));
+                            d.setMaSize(rs2.getInt("MaSize"));
+                            d.setSize(rs2.getString("Size"));
+                            d.setSoLuong(rs2.getInt("SoLuong"));
+                            list.add(d);
+                        }
+                        p.setChiTietSanPham(list);
+                    }
                 }
+
+                return p;
             }
-        } catch (Exception ex) { ex.printStackTrace(); }
-        return null;
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace();
     }
+    return null;
+}
+
     public List<Product> getProductsByCategory(String category) {
     List<Product> list = new ArrayList<>();
     try {

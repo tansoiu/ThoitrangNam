@@ -2,6 +2,8 @@ package Controller;
 
 import Model.ProductDAO;
 import Model.Product;
+import Model.ProductDetail;
+import Model.ProductDetailDAO;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.*;
@@ -11,6 +13,7 @@ import javax.servlet.http.*;
 @WebServlet("/product")
 public class ProductController extends HttpServlet {
     private ProductDAO dao = new ProductDAO();
+    private ProductDetailDAO dao1 = new ProductDetailDAO();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -52,7 +55,10 @@ public class ProductController extends HttpServlet {
             throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("id"));
         Product p = dao.getProductById(id);
+        //Thêm màu sắc và size
+        List<ProductDetail> details = dao1.getProductDetailsByProductId(id);
         req.setAttribute("product", p);
+        req.setAttribute("details", details);
         RequestDispatcher rd = req.getRequestDispatcher("product_detail.jsp");
         rd.forward(req, resp);
     }

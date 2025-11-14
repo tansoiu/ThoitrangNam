@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập tài khoản</title>
 
-    <!-- ✅ Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/logins/login-12/assets/css/login-12.css">
     <link rel="stylesheet" href="css/style.css">
@@ -29,14 +29,14 @@
       <div class="col-12 col-lg-10 col-xl-8">
         <div class="row gy-5 justify-content-center">
           <div class="col-12 col-lg-5">
-            <!-- ✅ Form đăng nhập (liên kết với servlet cũ) -->
+            <!-- Form đăng nhập (liên kết với servlet cũ) -->
             <form action="user" method="post">
               <!-- Hidden để Servlet nhận biết action -->
               <input type="hidden" name="action" value="login"/>
 
               <div class="row gy-3 overflow-hidden">
 
-                <!-- ✅ Ô nhập tên đăng nhập -->
+                <!-- Ô nhập tên đăng nhập -->
                 <div class="col-12">
                   <div class="form-floating mb-3">
                     <input type="text" class="form-control border-0 border-bottom rounded-0"
